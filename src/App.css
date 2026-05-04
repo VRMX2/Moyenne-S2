@@ -1,0 +1,201 @@
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 1rem;
+}
+
+.glass-panel {
+  background: rgba(30, 41, 59, 0.7); /* slate-800 with opacity */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 3rem;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 
+              0 0 40px rgba(99, 102, 241, 0.1); /* Indigo glow */
+  transition: all 0.3s ease;
+}
+
+.title {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(to right, #818cf8, #c084fc); /* Indigo to Fuchsia */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  text-align: center;
+  color: #94a3b8; /* slate-400 */
+  margin-top: 0.5rem;
+  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.modules-grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.module-input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.4);
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.module-input-group:hover, .module-input-group:focus-within {
+  transform: translateY(-2px);
+  border-color: rgba(129, 140, 248, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3),
+              0 0 15px rgba(129, 140, 248, 0.15);
+}
+
+.module-input-group label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #e2e8f0; /* slate-200 */
+}
+
+.coef-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #818cf8;
+  background: rgba(129, 140, 248, 0.1);
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+  width: fit-content;
+}
+
+.module-input-group input {
+  width: 80px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.5rem;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  outline: none;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.module-input-group input:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #818cf8;
+  box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.2);
+}
+
+.result-container {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.result-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #64748b, #94a3b8);
+  transition: all 0.5s ease;
+}
+
+.result-container.passed::before {
+  background: linear-gradient(90deg, #10b981, #34d399); /* Emerald */
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+}
+
+.result-container.failed::before {
+  background: linear-gradient(90deg, #ef4444, #f87171); /* Red */
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+}
+
+.result-container h2 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+.average-display {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 30px rgba(255,255,255,0.1);
+}
+
+.average-display span {
+  font-size: 1.5rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.result-container.passed .average-display {
+  color: #34d399;
+  text-shadow: 0 0 30px rgba(52, 211, 153, 0.2);
+}
+
+.result-container.failed .average-display {
+  color: #f87171;
+  text-shadow: 0 0 30px rgba(248, 113, 113, 0.2);
+}
+
+.status-message {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+.result-container.passed .status-message {
+  color: #10b981;
+}
+
+.result-container.failed .status-message {
+  color: #ef4444;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .glass-panel {
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+
+  .module-input-group {
+    flex-direction: row;
+  }
+}
